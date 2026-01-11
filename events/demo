@@ -1,0 +1,8 @@
+"body":{
+  "order_id": "ORD103",
+  "user_id": "SQS001",
+  "items": [{"sku": "SKU101", "qty": 2}],
+  "total_amount":"1250.0",
+  "payment_method":"cridet_card"
+}
+

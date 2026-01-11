@@ -1,0 +1,20 @@
+{
+  "Records": [
+    {
+      "messageId": "b7487c39-2b95-4ea5-8057-2c2ab107d239",
+      "receiptHandle": "AQEBtwcr0InBVRZt5MAkz9/DetgnPfSu7Jc9lqb9hSqS0YawRT70ByiNGj7VqrHedmzJf3/tYBeZluZCaQWIWkMLcR1IRjTUQRUIIzsuRjfsBDc2BYPkOvDy5BRaohwSKObyceeo8qFwGtPgmbrJ5F2n/AVQPDS6jGVBaza3pQeHINdmndRYYIqwffeQUKAD3EXhfyVyaoo5rbDECr/phk564LkMATmDnnBrTsuU1OVSLNNjwPQDmGMIK68iI5aqgiApfKhePqXmTI/pIDAtUa2Bdjo9pl7GP7wEq/1D2NuwGN4R7jl7eh4Ql3huq2TrqSU9T115nD3vyEjyVtZRYfHQ6yULFgaMC+SJpcwT1yXI8aA0TABuhGw95EmWXIykFMnH1WvEvMZsbAaqffOAheHSnA==",
+      "body": "{\n\t\"order_id\": \"Order_orm04\",\n\t\"user_id\": \"Ormohan001\",\n\t\"total_amount\": 1450.0,\n\t\"payment_method\": \"UPIPay\",\n\t\"status\": \"Success\",\n\t\"created_at\": \"2026-01-09T12:30:00Z\",\n\t\"updated_at\": \"2026-01-09T12:30:00Z\"\n}",
+      "attributes": {
+        "ApproximateReceiveCount": "1",
+        "SentTimestamp": "1767969400801",
+        "SenderId": "082291634475",
+        "ApproximateFirstReceiveTimestamp": "1767969400814"
+      },
+      "messageAttributes": {},
+      "md5OfBody": "1ed517bf0ff9c07fbd611a0d712f9d63",
+      "eventSource": "aws:sqs",
+      "eventSourceARN": "arn:aws:sqs:us-east-1:082291634475:Demo_messages",
+      "awsRegion": "us-east-1"
+    }
+  ]
+}

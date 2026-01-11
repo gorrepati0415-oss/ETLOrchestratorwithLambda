@@ -1,0 +1,14 @@
+CREATE TABLE inventry_items (
+    id INT AUTO_INCREMENT,
+    order_id VARCHAR(50) NOT NULL,
+    sku VARCHAR(100) NOT NULL,
+    status VARCHAR(20),
+
+    PRIMARY KEY (id),
+
+    CONSTRAINT fk_inventry_order
+        FOREIGN KEY (order_id)
+        REFERENCES orders(order_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+) ENGINE=InnoDB;
