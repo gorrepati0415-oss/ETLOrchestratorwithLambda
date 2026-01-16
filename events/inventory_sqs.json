@@ -1,17 +1,17 @@
 {
   "Records": [
     {
-      "messageId": "0e7aeacd-c020-43a2-b003-ecb4c5f064a6",
-      "receiptHandle": "AQEB5krz7Y01M2LAzKslxxVw0gZRa5F4ovzFUvf49WHH1aJmDylwG9ZkbxiXw29q/F2mA0xdm9mpTdCiPQU4pPdX+Z24J9PHOUdrLP3rFU/1SvCYWSEBaVmnOwLfsWrJU/ji0eMTzIfwYBTOBAvNj/Eiclqvfy/D0QZYIySvMbFy8VsNq/Si62jLMLu/HORYh2QVN4YdY2AGI/CGWKW67jiyYftmkA/dgR+BPK+NJ293i2H1lGcd9E9SZEl4wHQZ83WviVEBKCTcFLtdHqKVmVqAL6tHlk7SuOTRo8yK7UTEItTFS704bF7ska0TS38hOgdMMDub4yvBZ416VeEqLJBTmHQWdZeiQB1HPnmX8tP1a/Uw9jgA2/9lOb2UZDa1MUOJKJ6bYNABpnqQIhAaFAWBGQ==",
-      "body": " \"{\\n\\t\\\"order_id\\\": \\\"ORD123\\\",\\n\\t\\\"reserved_items\\\": [\\n\\t\\t{\\\"sku\\\": \\\"SKU101\\\", \\\"status\\\": \\\"Completed\\\"}\\n\\t]\\n}\"",
+      "messageId": "39476738-9eab-47e6-86bd-9eddaebb9231",
+      "receiptHandle": "AQEBBBKustygARgMjSbOx6X7y8qG0x14BOhcFBQ5yU0fa1l1t6IvPEIXsZqZZ1cBGBrDSN+66wIU0cOsCEfNpGIsz0GtbQFCpcHjmmcs5c2VZWlczjSJ8GeEu3O9ybwQExr6UzSzdfEOEn1owYu1jElg3uEYLHABzCT/LU8B2ksbME+/XrLzxvEAcOk/Y+Zr8WWhgB/D+DMrzRYYgnKakECwDqQcNjGRtpa3gBuE5GL+wYMgEmTOhDlVEnRqyIncMvfr1j1BKVpZ+v1BBx6V+Q7s1GVMsH26dtXMWjbGhvbtB0GRLk46yjkaBxYgUAaulswOFw+QQGrP7K/1JajMhsmDAudwiJoBF+RxDZ6a7QfBfrtCNjQ6QmIgIGqUeWSw75D8mC15PynY6HBblM3VSRtbFQ==",
+      "body": "{\n  \"header\": {\n    \"eventName\": \"inventoryReservedEvent\",\n    \"publisher\": \"inventory-service\",\n    \"organized-id\": \"eCommRetail\",\n    \"source\": \"inventory.reservation.handler\",\n    \"timestamp\": \"2025-07-19T13:12:00Z\"\n  },\n  \"body\": {\n    \"order_id\": \"Order_moha\",\n    \"reserved_items\": [\n      {\"sku\": \"SKU101\", \"status\": \"completed\"}\n    ]\n  }\n}",
       "attributes": {
         "ApproximateReceiveCount": "1",
-        "SentTimestamp": "1768047503824",
+        "SentTimestamp": "1768536002029",
         "SenderId": "082291634475",
-        "ApproximateFirstReceiveTimestamp": "1768047503827"
+        "ApproximateFirstReceiveTimestamp": "1768536002039"
       },
       "messageAttributes": {},
-      "md5OfBody": "2737c28d5d3e0b547e64b5a9192cf83d",
+      "md5OfBody": "c352a5bc6fa8255fa270f27e836a7c7f",
       "eventSource": "aws:sqs",
       "eventSourceARN": "arn:aws:sqs:us-east-1:082291634475:Demo_messages",
       "awsRegion": "us-east-1"

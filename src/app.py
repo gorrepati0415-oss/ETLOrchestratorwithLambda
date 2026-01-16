@@ -1,28 +1,23 @@
 import json
 
 from src.framework.etl_engine import Engine
-from src.framework.workflow.work_flow_service import WorkFlowService
+from src.framework.workflow.work_flow_main import WorkFlow
 from src.mapper.orm_register import run_mappers
 from src.services.Inventory_service import InventoryService
 from src.services.order_service import OrderService
 
-
 run_mappers()
-work=WorkFlowService()
-work.register_service(InventoryService())
-work.register_service(OrderService())
 
+work = WorkFlow()
+work.register_service(InventoryService(service_name='Inventory Service',description='details of Inventory'))
+work.register_service(OrderService(service_name='Order Service',description='details of Order'))
+engine=Engine(work)
 
 def lambda_handler(event, context):
 
-    engine=Engine(work)
     engine.execute(event)
 
-
-    # order_service = OrderService(event)
-    # order_service.validate_data()
-    # order_service.process_data()
-    # order_service.send_to_sqs()
+    print(event)
 
 
 

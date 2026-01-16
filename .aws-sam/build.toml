@@ -5,8 +5,8 @@ codeuri = "C:\\Users\\ASUS\\PycharmProjects\\ETLOrchestratorwithLambda"
 runtime = "python3.12"
 architecture = "x86_64"
 handler = "src.app.lambda_handler"
-source_hash = "12fd3edab5d9b6a6de5660c4248cef943c2c02e50d0f02c0da67765184c89c37"
-manifest_hash = "82698677aaacb62fe2452b852c284fd3"
+source_hash = "f89b51bac52ef20b4ddf8a6f120afaefe40c6adac034b69958097b62cf9de1d1"
+manifest_hash = "9e7c3a7dd00fe7fec38e891d1d8bbb65"
 packagetype = "Zip"
 functions = ["HelloWorldFunction"]
 
