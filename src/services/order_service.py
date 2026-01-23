@@ -1,6 +1,7 @@
 import json
 import uuid
 
+from src.exceptions.all_exception import DuplicateOrderException
 from src.framework.orchestration_abstract import EtlAbstractOrchestrator
 from src.model.order_model import OrderModel
 from src.repositores.Order_repository import OrderRepository
@@ -46,9 +47,16 @@ class OrderService(EtlAbstractOrchestrator):
             status=status,
             total_amount=total_amount)
         repo = OrderRepository()
-        repo.insert(order_dt)
+        try:
+            repo.insert(order_dt)
+        except DuplicateOrderException as e:
 
-        logger.info(f'{self.service_id}  Received Event Data.. Successful....')
+            logger.warning(
+                f'{self.service_id} Duplicate order ignored | order_id={order_dt.order_id}'
+            )
+        return
+
+
     def send_to_sqs(self):
         print("sending order not required...")
 

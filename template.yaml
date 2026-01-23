@@ -3,36 +3,63 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   ETLOrchestratorwithLambda
 
-  Sample SAM Template for ETLOrchestratorwithLambda
-
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
-    Timeout: 30
+    Runtime: python3.12
+    Architectures:
+      - x86_64
+    Timeout: 300
 
 Resources:
+  # ------------------ SQS ------------------
   MySqsQueue:
     Type: AWS::SQS::Queue
     Properties:
-        QueueName: my-queue
-        VisibilityTimeout: 60
-
+      VisibilityTimeout: 300
+  # ------------------ RDS (Minimal MySQL) ------------------
+  OrdersDB:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      Engine: mysql
+      DBInstanceClass: db.t3.micro
+      AllocatedStorage: "20"
+      DBName: batch1
+      MasterUsername: admin
+      MasterUserPassword: MyStrongPassword123!
+      PubliclyAccessible: true
+  # ------------------ Producer Lambda (API → SQS) ------------------
   HelloWorldFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
       CodeUri: .
       Handler: src.app.lambda_handler
-      Runtime: python3.12
-      Architectures:
-        - x86_64
-
-#      Policies:
-#        -SQSPollerPolicy:
-#            QueueArn: !GetAtt MySqsQueue.Arn
+      Environment:
+        Variables:
+          QUEUE_URL: https://sqs.us-east-1.amazonaws.com/082291634475/ETLOrchestratorwithLambda-MySqsQueue-D6wPfY24fbWI
       Policies:
         - SQSSendMessagePolicy:
-            QueueName: !GetAtt MySqsQueue.Arn
-
+            QueueName: !Ref MySqsQueue
+      Events:
+        OrdersApi:
+          Type: Api
+          Properties:
+            Path: /orders
+            Method: post
+  # ------------------ Consumer Lambda (SQS → RDS) ------------------
+  ConsumersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: src.consumer.lambda_handler
+      Environment:
+        Variables:
+          DB_HOST: database-1.c6z8q4esgrdk.us-east-1.rds.amazonaws.com
+          DB_NAME: batch1
+          DB_USER: admin
+          DB_PASSWORD: Mohan2026
+      Policies:
+        - SQSPollerPolicy:
+            QueueName: !Ref MySqsQueue
       Events:
         SqsTrigger:
           Type: SQS
@@ -42,19 +69,3 @@ Resources:
             Enabled: true
 
 
-Outputs:
-
-  HelloWorldFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
-
-  SqsQueueUrl:
-    Description: SQS Queue URL
-    Value: !Ref MySqsQueue
-
-  SqsQueueArn:
-    Description: SQS Queue ARN
-    Value: !GetAtt MySqsQueue.Arn

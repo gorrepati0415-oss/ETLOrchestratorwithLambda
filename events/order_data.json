@@ -1,20 +1,10 @@
 {
-  "Records": [
-    {
-      "messageId": "2a2627c1-f126-440d-8336-f199eda44a7d",
-      "receiptHandle": "AQEB18SdphrtRpDVJn6/yjG9GGiAagAiXzqO6jdLuERerzHBjObC0G65wYcS/txRX15eiquWukNiesTMRCt6PfyhofC/66clON5n2n5WKSTv7ivNySEnMXb3p/hReYHSWOD3xWdMPYiyON0hH5uqCP2LK9orwbLigeZLMWfYxRLmQMMRtmuBgfGCHr1zQ7FbUHL9N3a5etRhxKSDbDV3p7Z+0C0/bEnKmIO4xw1JyukdJ58Vov2XYum8rGxH8J3OsO8LoZJw2ml/X8GGgcawdDsDEcyKFwb0orx+hlDGPyFwTOb4WdizXTW8fdpxDRV/N9TSj8HENVzafFQtNfw+2XhvSgECEKGM1GIopnEo59KAdP5zliA8Zll5PvAeKqYqJsNynhIcpBit4jKWOUKEJ2sYhg==",
-      "body": "{\n  \"header\": {\n    \"eventName\": \"OrderPlaceEvent\",\n    \"publisher\": \"order-service\",\n    \"organized-id\": \"eCommRetail\",\n    \"source\": \"frontend.checkout\",\n    \"timestamp\": \"2025-07-19T13:12:00Z\"\n  },\n  \"body\": {\n    \"order_id\": \"Order_Ramesh\",\n    \"user_id\": \"Ormohan001\",\n    \"items\": [\n      {\"sku\": \"SKU123\", \"quantity\": 2},\n      {\"sku\": \"SKU124\", \"quantity\": 2}\n    ],\n    \"total_amount\": 1450.0,\n    \"payment_method\": \"UPIPay\",\n    \"status\": \"Success\"\n  }\n}",
-      "attributes": {
-        "ApproximateReceiveCount": "1",
-        "SentTimestamp": "1768535783623",
-        "SenderId": "082291634475",
-        "ApproximateFirstReceiveTimestamp": "1768535783635"
-      },
-      "messageAttributes": {},
-      "md5OfBody": "0306f942276b30b8e609713c7e8c17d5",
-      "eventSource": "aws:sqs",
-      "eventSourceARN": "arn:aws:sqs:us-east-1:082291634475:Demo_messages",
-      "awsRegion": "us-east-1"
-    }
-  ]
+  "resource": "/orders",
+  "path": "/orders",
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"header\":{\"eventName\":\"OrderPlaceEvent\",\"publisher\":\"order-service\",\"organized-id\":\"eCommRetail\",\"source\":\"frontend.checkout\",\"timestamp\":\"2025-07-19T13:12:00Z\"},\"body\":{\"order_id\":\"Order12_Mamore\",\"user_id\":\"Ormohan001\",\"items\":[{\"sku\":\"SKU123\",\"quantity\":2},{\"sku\":\"SKU124\",\"quantity\":2}],\"total_amount\":1450.0,\"payment_method\":\"UPIPay\",\"status\":\"Success\"}}",
+  "isBase64Encoded": false
 }

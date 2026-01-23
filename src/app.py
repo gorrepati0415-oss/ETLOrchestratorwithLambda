@@ -1,31 +1,44 @@
+
+
 import json
 
-from src.framework.etl_engine import Engine
-from src.framework.workflow.work_flow_main import WorkFlow
-from src.mapper.orm_register import run_mappers
-from src.services.Inventory_service import InventoryService
-from src.services.order_service import OrderService
+import boto3
+import os
 
-run_mappers()
+import time
+time.sleep(10)
 
-work = WorkFlow()
-work.register_service(InventoryService(service_name='Inventory Service',description='details of Inventory'))
-work.register_service(OrderService(service_name='Order Service',description='details of Order'))
-engine=Engine(work)
-
+sqs_client = boto3.client("sqs")
+QUEUE_URL = os.getenv("QUEUE_URL")
 def lambda_handler(event, context):
 
-    engine.execute(event)
+    data = json.loads(event['body'])
+    body =data['body']
+    header=data['header']
+    message={
+        "header":header,
+        "body":body
+    }
 
-    print(event)
-
-
+    response = sqs_client.send_message(
+        QueueUrl=QUEUE_URL,
+        MessageBody=json.dumps(message)
+    )
 
     return {
         "statusCode": 200,
         "body": json.dumps({
-            "message": "hello world",
+            "message": response["MessageId"]
             # "location": ip.text.replace("\n", "")
-            "data":"success"
         }),
     }
+
+
+    # return {
+    #     "statusCode": 200,
+    #     "body": json.dumps({
+    #         "message": "hello world",
+    #         # "location": ip.text.replace("\n", "")
+    #         "data":"success"
+    #     }),
+    # }

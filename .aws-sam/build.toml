@@ -5,9 +5,9 @@ codeuri = "C:\\Users\\ASUS\\PycharmProjects\\ETLOrchestratorwithLambda"
 runtime = "python3.12"
 architecture = "x86_64"
 handler = "src.app.lambda_handler"
-source_hash = "f89b51bac52ef20b4ddf8a6f120afaefe40c6adac034b69958097b62cf9de1d1"
+source_hash = "ebb6e2ff57d2bf0722f593aed266894344f98e616cc50dcf633db4655fb8d38a"
 manifest_hash = "9e7c3a7dd00fe7fec38e891d1d8bbb65"
 packagetype = "Zip"
-functions = ["HelloWorldFunction"]
+functions = ["HelloWorldFunction", "ConsumersFunction"]
 
 [layer_build_definitions]
